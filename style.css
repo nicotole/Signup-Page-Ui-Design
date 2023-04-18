@@ -1,0 +1,169 @@
+/* https://www.youtube.com/watch?v=IWFqGsXxJ1E&ab_channel=KevinPowell */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    display: grid;
+    place-items:  center;
+    margin: 0;
+    padding: 0 32px;
+    background: #f5f5f5;
+    font-family: "Ubuntu";
+    animation: rotate 6s infinite alternate linear;
+}
+
+.circle{
+    position: fixed;
+    top: -50vmin; /* -50% viewport min*/
+    left: -50vmin;
+    width: 100vmin;
+    height: 100vmin;
+    border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+    background: #65c8ff;
+}
+
+.circle::after{/* pseudo-element that is the last child of the selected element*/
+    /*copy the circle and put it on the dom, thats a pseudo-element
+    The parent element it`s the circle*/
+    content: "";
+    position: inherit;
+    right: -50vmin;
+    bottom: -55vmin;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #143db1;
+}
+
+.card{
+    overflow: hidden;/*hides the element overflow*/
+    position: relative;
+    z-index: 3;/*the card to be up in the stack of elements*/
+    width: 100%;
+    margin: 0 20px;
+    padding: 160px 30px 36px;
+    border-radius: 1.25rem;
+    background: #f5f5f5;
+    text-align: center;
+    box-shadow: 0 100px 100px rgb(0 0 0 / 10%);
+}
+
+.card::before{/* pseudo-element that is the first child of the selected element.*/
+    content: "";
+    position: absolute;
+    background: #216ce7;
+    top: -880px;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    translate: -50% 0%;
+}
+
+.card .logo{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #fff;
+    height: 64px;
+    width: 64px;
+    top: 36px;
+    /*the next 2 lines got the perfect center for the card logo*/
+    left: 50%;/*puts the 50% of the father on the left*/
+    translate: -50% 0; /*goes in the x axis a -50% of his own size*/
+}
+
+.card .logo i{
+    font-size: 50px;
+    color: #216ce7;
+    font-weight: 500;
+}
+
+.card > h2{/*will match all h2 elements that are nested directly insude a .card element*/
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0 0 30px;
+    color: #2a3444;
+}
+
+.form{
+    margin: 0 0 30px;
+    display: grid;
+    gap: 18px
+}
+
+.form > input, .form > button{
+    width: 100%;
+    height: 50px;
+    border-radius: 28px;
+}
+
+.form > input{/*will match all input elements that are nested directly inside a .form element*/
+    border: 2px solid #e0e0e0;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 24px;/*the place holder moves and seems nice*/
+    transition: all 0.37s;
+}
+
+.form>input:hover{
+    border: 2px solid #000;
+}
+
+.form>input::placeholder{
+    color: #cac8c8;
+}
+
+.form>button{
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    background: #216ce7;
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.375s;
+}
+
+.form>button:hover {
+    color: #fff;
+    background: #143db1;
+}
+
+.card>footer{
+    color: #7c7c7c;
+}
+
+.card>footer>a{
+    color: #216ce7;
+    transition: all 0.375s;
+}
+
+.card>footer>a:hover{
+    color:#143db1
+}
+
+@media (width >= 500px){/*when its > than 500px the card looks to wide, with this we fixit*/
+    body{
+        padding: 0;
+    }
+    .card{
+        margin: 0;
+        width: 360px;
+    }
+}
